@@ -1,0 +1,66 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Jan 5, 2018 15:37:25").getTime();
+//var item = $(this).attr('user_id');
+
+// Update the count down every 1 second
+    var x = setInterval(function () {
+        // Get todays date and time
+
+        var now = new Date().getTime();
+        var distance = countDownDate - now;
+        var seconds = Math.floor((distance % (1000 * 4)) / 1000);
+        document.getElementById("demo").innerHTML = seconds + "s ";
+
+        // If the count down is over, write some text
+        if (distance == 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+
+//    $('#btn').click(function(){
+//        $('#user_id, #demo').show();
+//            window.setTimeout(function () {
+//                var item = $(this).attr('user_id');
+////                var userid = $("user_id").val();
+//                    window.location.href = item;
+//            }, 4000);
+//
+//})
+
+        $(document).ready(function(){
+            $("#btn").click(function(){
+              $("#user_id, #demo").show(1000);
+                  window.setTimeout(function () {
+                        var item = $(this).attr('user_id');
+                        window.location.href = item;
+                        console.log("hello");
+                     }, 4000);
+
+        })
+    });
+</script>
+
+<style>
+p {
+  font-size: 32px;
+}
+</style>
+
+
+{% for profile in recommended %}
+<a id = "user_id" href='/{{ profile.user.username }}' style="display: none;">{{ profile.user.username }} </a>
+<p id="demo" style="display: none;"></p>
+<br/>
+{% empty %}
+<p class='lead' id = "No_users" >No more users available</p>
+{% endfor %}
+<br>
+{% for profile in recommended %}
+{% if profile %}
+<button id="btn" class="btn btn-primary">Go..!!</button>
+<a href="/"><button id="swingit" class="btn btn-primary">Swingit</button></a>
+{% endif %}
+{% endfor %}

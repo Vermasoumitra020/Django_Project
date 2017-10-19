@@ -1,0 +1,16 @@
+.navbar{
+    background: 	#004160;
+    color: white   ;
+    border-radius: 0px;
+    border-color: 	#004160;
+}
+.navbar-default .navbar-brand {
+    color: #FDFEFE ;
+    font-family: 'Sedgwick Ave Display', cursive;
+    font-size: 32px;
+}
+
+  .navbar-default .navbar-nav > li >a {
+   color: white;
+   font-size: 16px;
+    }
